@@ -17,6 +17,7 @@ public class CustomerController {
 
     @MessageMapping("/chat/{roomId}")
     public UserChatMessage userSendMessage(@Payload UserChatMessage message) {
+        System.out.println("message = " + message);
 //        messagingTemplate.convertAndSendToUser("");
 
         return message;
