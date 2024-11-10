@@ -6,16 +6,22 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-@Configuration
-@EnableWebSocketMessageBroker   //메세지 브로커 활성화
-public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
-    //메세지 브로커 설정
+//@Configuration
+//@EnableWebSocketMessageBroker   //메세지 브로커 활성화
+public class SampleWebSocketConfig implements WebSocketMessageBrokerConfigurer {
+    /**
+     * 웹소켓 연결후 통신할 채널 설정 (브로커 설정)
+     * */
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic");    ///topic 채널로 브로커 설정
-        config.setApplicationDestinationPrefixes("/app");   //어플리케이션 요청 uri 프리픽스 설정
+        // 활성화할 브로커 (=연결할 채널) 접두사 | topic = 브로드캐스트, queue = 특정 클라이언트 하나
+        config.enableSimpleBroker("/topic", "/queue");
+        // 클라이언트(채널 접속자)가 요청할 엔드포인트 접두사
+        config.setApplicationDestinationPrefixes("/app");
     }
-    //stomp 프로토콜 엔드포인트 설정
+    /**
+     * 웹소켓 연결을 위한 엔드포인트 설정
+     * */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")

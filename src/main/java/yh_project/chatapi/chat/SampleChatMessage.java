@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 @Data
-public class ChatMessage {
+public class SampleChatMessage {
     private String sender;
     private String content;
     private MessageType type;
