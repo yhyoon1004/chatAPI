@@ -1,4 +1,4 @@
-package yh_project.chatapi.chat;
+package yh_project.chatapi.sample;
 
 import lombok.Data;
 

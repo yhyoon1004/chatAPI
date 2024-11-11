@@ -1,12 +1,12 @@
-package yh_project.chatapi.controller;
+package yh_project.chatapi.api;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-import yh_project.chatapi.chat.SampleChatMessage;
+import yh_project.chatapi.sample.SampleChatMessage;
 
-@Controller
+//@Controller
 public class SampleChatController {
     @MessageMapping("/chat.sendMessage")//클라이언트로부터 메세지 수신
     @SendTo("/topic/public")//수신한 메세지를 public 채널로 송신
